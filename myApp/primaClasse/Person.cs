@@ -62,11 +62,12 @@ namespace primaClasse
             this.gender = gender;
             this.birthCity = birthCity;
             this.birthDate = birthDate;
+            this.cf = this.FiscalCode();
             /*CodiceFiscale cfOgg = new CodiceFiscaleUtility.CodiceFiscale(secondName, firstName, Convert.ToString(gender), DateTime.ParseExact(this.birthDate, "dd/mm/yyyy", CultureInfo.InvariantCulture), birthCity, "RE", 0);
 
             this.cf = cfOgg.CodiceNormalizzato;
-            
-            this.stampa();*/
+            */
+            this.stampa();
         }
 
 
@@ -75,7 +76,7 @@ namespace primaClasse
             string result, gender;
 
             // adapt the gender property to the request string type in the constructor of CodiceFiscale
-            if(this.gender == Person.genderType.nonSpecificato)
+            if (this.gender == Person.genderType.nonSpecificato)
             {
                 result = "";
 
@@ -91,12 +92,22 @@ namespace primaClasse
                     gender = "F";
                 }
 
-                // creo l'isanta cf
-                CodiceFiscale cfOgg = new CodiceFiscaleUtility.CodiceFiscale(this.secondName, this.firstName, Convert.ToString(gender), DateTime.ParseExact(this.birthDate, "dd/mm/yyyy", CultureInfo.InvariantCulture), this.birthCity, "RE", 0);
 
-                // this.cf = cfOgg.CodiceNormalizzato;
+                try
+                {
+                    // creo l'isanta cf
+                    CodiceFiscale cfOgg = new CodiceFiscaleUtility.CodiceFiscale(this.secondName, this.firstName, Convert.ToString(gender), DateTime.ParseExact(this.birthDate, "dd/mm/yyyy", CultureInfo.InvariantCulture), this.birthCity, "RE", 0);
 
-                result = cfOgg.CodiceNormalizzato;
+                    // this.cf = cfOgg.CodiceNormalizzato;
+
+                    result = cfOgg.CodiceNormalizzato;
+                }
+                catch (Exception e)
+                {
+
+                    result = e.Message;
+                }
+;
             }
 
 
