@@ -15,7 +15,13 @@ namespace primaClasse
         // Attributi
         public string firstName;
         public string secondName;
-        public string gender; // m o f
+        public enum genderType
+        {
+            maschio,
+            femmina,
+            nonSpecificato
+        }; // m o f
+        public genderType gender;
         public string birthCity;
         public string birthDate;
         public string cf;
@@ -24,22 +30,43 @@ namespace primaClasse
         {
             this.firstName = "";
             this.secondName = "";
-            this.gender = "";
+            this.gender = Person.genderType.nonSpecificato;
             this.birthCity = "";
             this.birthDate = "";
         }
-        public Person(string firstName, string secondName, string gender, string birthCity, string birthDate)
+        public Person(string firstName, string secondName)
+        {
+            this.firstName = firstName;
+            this.secondName = secondName;
+            this.gender = Person.genderType.nonSpecificato;
+            this.birthCity = "";
+            this.birthDate = "";
+        }
+        public Person(string firstName, string secondName, Person.genderType gender) : this(firstName, secondName, gender, "Scandiano", "21/01/2005")
+        {
+
+        }
+
+        /// <summary>
+        /// Costruttore contenente tutti i parametri, per il salvataggio dei dati di una persona
+        /// </summary>
+        /// <param name="firstName">Nome della persona</param>
+        /// <param name="secondName">Cognome della persona</param>
+        /// <param name="gender">Genere, maschio/femmina/non specificato</param>
+        /// <param name="birthCity">Città di nascita</param>
+        /// <param name="birthDate">Data di nascita</param>
+        public Person(string firstName, string secondName, Person.genderType gender, string birthCity, string birthDate)
         {
             this.firstName = firstName;
             this.secondName = secondName;
             this.gender = gender;
             this.birthCity = birthCity;
             this.birthDate = birthDate;
-            CodiceFiscale cfOgg = new CodiceFiscaleUtility.CodiceFiscale(secondName, firstName, gender, DateTime.ParseExact(this.birthDate, "dd/mm/yyyy", CultureInfo.InvariantCulture), birthCity, "RE", 0);
+            /*CodiceFiscale cfOgg = new CodiceFiscaleUtility.CodiceFiscale(secondName, firstName, Convert.ToString(gender), DateTime.ParseExact(this.birthDate, "dd/mm/yyyy", CultureInfo.InvariantCulture), birthCity, "RE", 0);
 
             this.cf = cfOgg.CodiceNormalizzato;
-
-            this.stampa();
+            
+            this.stampa();*/
         }
 
 
