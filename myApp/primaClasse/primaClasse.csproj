@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\primaClasse\primaClasse.csproj" />
+    <ProjectReference Include="..\..\..\secondaApp\CodiceFiscale\CodiceFiscale.csproj" />
   </ItemGroup>
 
 </Project>
