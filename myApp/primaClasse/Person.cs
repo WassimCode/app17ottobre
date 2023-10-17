@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using CodiceFiscaleUtility;
 
@@ -69,8 +70,7 @@ namespace primaClasse
             */
             this.stampa();
         }
-
-
+#if DEBUG
         public string FiscalCode()
         {
             string result, gender;
@@ -96,7 +96,7 @@ namespace primaClasse
                 try
                 {
                     // creo l'isanta cf
-                    CodiceFiscale cfOgg = new CodiceFiscaleUtility.CodiceFiscale(this.secondName, this.firstName, Convert.ToString(gender), DateTime.ParseExact(this.birthDate, "dd/mm/yyyy", CultureInfo.InvariantCulture), this.birthCity, "RE", 0);
+                    CodiceFiscale cfOgg = new CodiceFiscaleUtility.CodiceFiscale(this.secondName, this.firstName, gender, DateTime.ParseExact(this.birthDate, "dd/mm/yyyy", CultureInfo.InvariantCulture), this.birthCity, "RE", 0);
 
                     // this.cf = cfOgg.CodiceNormalizzato;
 
@@ -116,7 +116,7 @@ namespace primaClasse
 
         }
 
-
+#endif
         public int calcolaAnni()
         {
             DateTime dataNascita;
@@ -144,5 +144,10 @@ namespace primaClasse
             Console.WriteLine("\nAge: " + this.calcolaAnni());
             Console.WriteLine("\nCodice fiscale: " + this.cf);
         }
+
+        /// <summary>
+        /// Method that given the input of the user, runs a method of this class
+        /// </summary>
+      
     }
 }
