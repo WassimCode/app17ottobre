@@ -70,6 +70,40 @@ namespace primaClasse
         }
 
 
+        public string FiscalCode()
+        {
+            string result, gender;
+
+            // adapt the gender property to the request string type in the constructor of CodiceFiscale
+            if(this.gender == Person.genderType.nonSpecificato)
+            {
+                result = "";
+
+            }
+            else
+            {
+                if (this.gender == Person.genderType.maschio)
+                {
+                    gender = "M";
+                }
+                else
+                {
+                    gender = "F";
+                }
+
+                // creo l'isanta cf
+                CodiceFiscale cfOgg = new CodiceFiscaleUtility.CodiceFiscale(this.secondName, this.firstName, Convert.ToString(gender), DateTime.ParseExact(this.birthDate, "dd/mm/yyyy", CultureInfo.InvariantCulture), this.birthCity, "RE", 0);
+
+                // this.cf = cfOgg.CodiceNormalizzato;
+
+                result = cfOgg.CodiceNormalizzato;
+            }
+
+
+
+            return result;
+
+        }
 
 
         public int calcolaAnni()
