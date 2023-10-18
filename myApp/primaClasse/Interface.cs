@@ -56,6 +56,7 @@ namespace primaClasse
                                 pArray[i].stampa();
                             }
                             Console.ReadLine();
+                            
                             break;
                         case 'c':
                             Console.Clear();
@@ -78,6 +79,9 @@ namespace primaClasse
                             Console.ReadLine();
                             break;
                         case 'z':
+                            Console.Clear();
+                            Console.WriteLine("\n Programma chiuso con successo! \n");
+                            Console.ReadLine();
 
                             break;
                         default:

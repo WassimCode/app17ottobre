@@ -11,3 +11,28 @@ pArray.Add(new primaClasse.Person("Wassim", "Bachar", Person.genderType.maschio,
 //Console.ReadLine();
 
 Interface.menu(pArray);
+Console.ReadLine();
+/*
+
+Console.WriteLine("\n Inserisci un valore: ");
+
+int n = Convert.ToInt32(Console.ReadLine());
+
+Console.WriteLine("\n Il risultato è: " + Fattoriale(n));
+
+
+
+int Fattoriale(int n)
+{
+    // pre condizione, verifico se n = 1
+
+    if (n == 1) {  
+        return 1; 
+    }
+    else
+    {
+        return n * Fattoriale(n - 1);
+    }
+    
+}
+*/
